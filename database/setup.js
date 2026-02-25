@@ -54,6 +54,10 @@ const Track = db.define('Track', {
     }
 });
 
+module.exports = {
+    db,
+    Track
+};
 
 // Run setup if this file is executed directly
 if (require.main === module) {
