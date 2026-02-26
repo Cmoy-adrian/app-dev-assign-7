@@ -81,7 +81,7 @@ app.put('/api/tracks/:id', async (req, res) => {
 
         const [updatedRowCount] = await Track.update(
             {songTitle, artistName, albumName, genre, duration, releaseYear},
-            {where: {id: req.params.id}}
+            {where: {trackId: req.params.id}}
         );
 
         if (updatedRowCount === 0) {
@@ -97,10 +97,10 @@ app.put('/api/tracks/:id', async (req, res) => {
 });
 
 // DELETE /api/tracks/:id - Delete a track based on the id provided using the .destroy() method. Handle cases where the track doesn't exist.
-app.delete('api/tracks/:id', async (req, res) => {
+app.delete('/api/tracks/:id', async (req, res) => {
     try {
         const deletedRowsCount = await Track.destroy({
-            where: { id: req.params.id }
+            where: { trackId: req.params.id }
         });
 
         if (deletedRowsCount === 0) {
